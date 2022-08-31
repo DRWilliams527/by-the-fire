@@ -1,5 +1,5 @@
 const { Schema, Model } = require('mongoose')
-const { Decimal128 } = require('mongoose')
+const { Decimal128 } = require('mongoose') 
 
 const movieSchema = new Schema({
     title: {
