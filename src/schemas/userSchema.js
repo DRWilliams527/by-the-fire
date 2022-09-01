@@ -1,18 +1,7 @@
-const validator = require('validator')
-
-const { Schema, Model } = mongoose
+const { Schema, model } = require('mongoose')
 
 const userSchema = new Schema({
-    email: {
-        type: String,
-        trim: true,
-        required: true,
-        validate(value) {
-            if (!validator.isEmail(value)) 
-                throw new Error("Invalid Email")
-        }
-    },
-    name: {
+    username: {
         type: String,
         trime: true,
         required: true,
@@ -39,4 +28,4 @@ const userSchema = new Schema({
 
 userSchema.set('timestamps', true)
 
-module.exports = Model('user', userSchema)
+module.exports = model('user', userSchema)

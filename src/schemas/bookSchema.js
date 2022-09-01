@@ -1,4 +1,4 @@
-const { Schema, Model } = require('mongoose')
+const { Schema, model } = require('mongoose')
 const { Decimal128 } = require('mongodb')
 
 const bookSchema = new Schema({
@@ -45,4 +45,4 @@ const bookSchema = new Schema({
 
 bookSchema.set('timestamps', true)
 
-module.exports = Model('book', bookSchema) 
+module.exports = model('book', bookSchema) 

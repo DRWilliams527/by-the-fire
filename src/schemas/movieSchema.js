@@ -1,4 +1,4 @@
-const { Schema, Model } = require('mongoose')
+const { Schema, model } = require('mongoose')
 const { Decimal128 } = require('mongoose') 
 
 const movieSchema = new Schema({
@@ -38,4 +38,4 @@ const movieSchema = new Schema({
 
 movieSchema.set('timestamps', true)
 
-module.exports = Model('movie', movieSchema) 
+module.exports = model('movie', movieSchema) 
