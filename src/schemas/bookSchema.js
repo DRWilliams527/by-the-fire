@@ -16,6 +16,14 @@ const bookSchema = new Schema({
         type: String,
         trim: true,
     },
+    series: {
+        type: String,
+        trim: true
+    },
+    bookNo: {
+        type: Number,
+        trim: true,
+    },
     dateStarted: {
         type: Date,
         trim: true,
