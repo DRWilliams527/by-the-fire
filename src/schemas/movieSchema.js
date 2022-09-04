@@ -1,5 +1,4 @@
 const { Schema, model } = require('mongoose')
-const { Decimal128 } = require('mongoose') 
 
 const movieSchema = new Schema({
     title: {
@@ -10,7 +9,6 @@ const movieSchema = new Schema({
     director: {
         type: String,
         trim: true,
-        required: true,
     },
     actors: [{
         type: String,
@@ -25,11 +23,16 @@ const movieSchema = new Schema({
         trim: true,
     },
     rating: {
-        type: Decimal128,
+        type: Number,
     },
     notes: [{
-        type: String 
+        type: String,
+        trim: true
     }],
+    date: {
+        type: Date,
+        trim: true,
+    },
     owner: {
         type: Schema.Types.ObjectId,
         ref: 'user'

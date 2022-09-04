@@ -16,7 +16,7 @@ const userController = {
                 password: password,
             })
         
-            const token = jwt.sign({data: user._id}, `${process.env.JWT_SECRET}`, {expiresIn: '24h'})
+            const token = await jwt.sign({data: user._id}, `${process.env.JWT_SECRET}`, {expiresIn: '24h'})
         
             res.cookie('auth', token, {
                 expires: new Date(Date.now() + (3600 * 1000 * 24)),
@@ -39,12 +39,12 @@ const userController = {
         }
         
         if (validated) {
-            const token = jwt.sign({data: user._id}, `${process.env.JWT_SECRET}`, {expiresIn: '24h'})
-            await user.populate('books').
-                populate('movies').
-                populate('friends')
+            const token = await jwt.sign({data: user._id}, `${process.env.JWT_SECRET}`, {expiresIn: '24h'})
+            await user.populate('books')
+            // await user.populate('movies')
+            await user.populate('friends')
             
-            res.cookie('auth', {
+            res.cookie('auth', token, {
                 expires: new Date(Date.now() + (3600 * 1000 * 24)),
                 httpOnly: true,
                 sameSite: true,

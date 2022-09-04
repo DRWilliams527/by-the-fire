@@ -8,7 +8,7 @@ const auth = async(req, res, next) => {
 
     try {
         const user_id = await jwt.verify(token, `${process.env.JWT_SECRET}`)
-        const user = User.findOne( {_id: user_id.data} )
+        const user = await User.findOne( {_id: user_id.data} )
         res.locals.user = user
         return next()
     } catch {

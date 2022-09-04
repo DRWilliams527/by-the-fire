@@ -1,5 +1,4 @@
 const { Schema, model } = require('mongoose')
-const { Decimal128 } = require('mongodb')
 
 const bookSchema = new Schema({
     title: {
@@ -22,7 +21,6 @@ const bookSchema = new Schema({
     },
     bookNo: {
         type: Number,
-        trim: true,
     },
     dateStarted: {
         type: Date,
@@ -32,12 +30,15 @@ const bookSchema = new Schema({
         type: Date,
         trim: true,
     },
+    pageCount: {
+        type: Number,
+    },
     summary: {
         type: String,
         trim: true,
     },
     rating: {
-        type: Decimal128,
+        type: Number,
     },
     notes: [{
         type: String 

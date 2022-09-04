@@ -1,4 +1,4 @@
-const { Router, application } = require('express')
+const { Router } = require('express')
 const asyncHandler = require('express-async-handler')
 
 const bookController = require('../controllers/bookController')
