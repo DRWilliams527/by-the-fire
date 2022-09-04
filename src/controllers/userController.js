@@ -40,6 +40,9 @@ const userController = {
         
         if (validated) {
             const token = jwt.sign({data: user._id}, `${process.env.JWT_SECRET}`, {expiresIn: '24h'})
+            await user.populate('books').
+                populate('movies').
+                populate('friends')
             
             res.cookie('auth', {
                 expires: new Date(Date.now() + (3600 * 1000 * 24)),
