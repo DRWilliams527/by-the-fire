@@ -2,6 +2,7 @@ const express = require('express')
 const cookieParser = require('cookie-parser')
 
 const userRouter = require('./routers/userRouter')
+const bookRouter = require('./routers/bookRouter')
 const connectDB = require('./db/mongoose')
 
 const app = express();
@@ -13,6 +14,7 @@ app.use(cookieParser())
 app.use(express.urlencoded( { extended: false } ) )
 
 app.use('/user', userRouter)
+app.use('/book', bookRouter)
 
 app.get('/', (req, res) => {
     res.send('Hello World')

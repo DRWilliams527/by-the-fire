@@ -45,3 +45,5 @@ const bookController = {
         res.status(200).send("Book details updated")
     }
 }
+
+module.exports = bookController
