@@ -54,7 +54,6 @@ const userController = {
     updateUser: async(req, res) => {
         const validUpdates = ['username', 'password', 'newPassword', 'newUsername']
         const updates = Object.keys(req.body)
-        const username = req.body.username
         const newPassword = req.body.newPassword
         const newUsername = req.body.newUsername
 
@@ -70,7 +69,7 @@ const userController = {
 
             if (updatingUsername) potentialUser = await User.findOne( { username: newUsername } )
             if (!potentialUser) {
-                const user = await User.findOne( { username: username } )
+                const user = res.locals.user
                 if (updatingUsername) user.username = newUsername
                 if (updatingPassword) user.password = await bcrypt.hash(newPassword, 10)
                 user.save()
