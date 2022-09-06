@@ -18,6 +18,13 @@ const movieSchema = new Schema({
         type: String,
         trim: true,
     },
+    series: {
+        type: String,
+        trim: true
+    },
+    movieNo: {
+        type: Number
+    },
     summary: {
         type: String,
         trim: true,
@@ -29,9 +36,8 @@ const movieSchema = new Schema({
         type: String,
         trim: true
     }],
-    date: {
-        type: Date,
-        trim: true,
+    releaseDate: {
+        type: Date
     },
     owner: {
         type: Schema.Types.ObjectId,

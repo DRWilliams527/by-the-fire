@@ -11,4 +11,4 @@ bookRouter.delete('/deleteBook', auth, asyncHandler(bookController.deleteBook))
 
 bookRouter.patch('/editBook', auth, asyncHandler(bookController.editBook))
 
-module.exports = bookRouter;
+module.exports = bookRouter

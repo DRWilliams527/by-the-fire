@@ -2,6 +2,8 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
 const User = require('../schemas/userSchema')
+const Movie = require('../schemas/movieSchema')
+const Book = require('../schemas/bookSchema')
 
 const userController = {
     registerUser: async(req, res) => {
@@ -40,10 +42,11 @@ const userController = {
         
         if (validated) {
             const token = await jwt.sign({data: user._id}, `${process.env.JWT_SECRET}`, {expiresIn: '24h'})
+            // Research: The recommended way from Mongoose to chain populates together threw errors here.
             await user.populate('books')
-            // await user.populate('movies')
+            await user.populate('movies')
             await user.populate('friends')
-            
+
             res.cookie('auth', token, {
                 expires: new Date(Date.now() + (3600 * 1000 * 24)),
                 httpOnly: true,
